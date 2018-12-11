@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>move_turtlesim</name>
+  <version>0.0.0</version>
+  <description>The move_turtlesim package</description>
+
+  <maintainer email="kdh@es.aau.dk">Karl Hansen</maintainer>
+
+  <license>MIT</license>
+
+  <depend>roscpp</depend>
+  <depend>turtlesim</depend>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+</package>
