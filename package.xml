@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>move_turtlesim</name>
+  <name>bookish_carnival</name>
   <version>0.0.0</version>
-  <description>The move_turtlesim package</description>
+  <description>The bookish_carnival package</description>
 
-  <maintainer email="kdh@es.aau.dk">Karl Hansen</maintainer>
+  <maintainer email="asdfirepl@gmail.com">Antoni Malecki</maintainer>
 
   <license>MIT</license>
 

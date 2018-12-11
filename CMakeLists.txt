@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(move_turtlesim)
+project(bookish_carnival)
 
 find_package(catkin REQUIRED roscpp turtlesim geometry_msgs)
 
@@ -9,8 +9,9 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(dance src/dance.cpp)
-target_link_libraries(bookish-carnival
+
+add_executable(bookish_carnival src/dance.cpp)
+target_link_libraries(bookish_carnival
   ${catkin_LIBRARIES}
 )
 
