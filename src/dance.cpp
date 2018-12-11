@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
       case 0:
       {
         //forward
-        msg.linear.x = 1.0;
+        msg.linear.x = 0.5;
         msg.angular.z = 0.0;
         int tf=0;
         tf = rand() %10 + 3;
@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
             cmd_vel_pub.publish(msg);
             ros::Duration(0.2).sleep();
           }
-        msg.linear.x = -1.0;
+        msg.linear.x = -0.5;
         msg.angular.z = 0.0;
         for (int i=0 ; i<tf; i++)
           {
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
       case 1:
       {
       msg.linear.x = 0.0;
-      msg.angular.z = 1.0;
+      msg.angular.z = 2.0;
       int ts=0;
       ts = rand() %10 + 3;
       for (int i=0 ; i<ts; i++)
@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
           ros::Duration(0.2).sleep();
         }
       msg.linear.x = 0.0;
-      msg.angular.z = -1.0;
+      msg.angular.z = -2.0;
       //for (int i=0 ; i<ts; i++)
       //  {
       //    cmd_vel_pub.publish(msg);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[]) {
       case 2:
       {
         //back
-        msg.linear.x = -1.0;
+        msg.linear.x = -0.5;
         msg.angular.z = 0.0;
         int tb=0;
         tb = rand() %10 + 3;
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
             cmd_vel_pub.publish(msg);
             ros::Duration(0.2).sleep();
           }
-        msg.linear.x = 1.0;
+        msg.linear.x = 0.5;
         msg.angular.z = 0.0;
         for (int i=0 ; i<tb; i++)
           {
@@ -79,7 +79,7 @@ int main(int argc, char *argv[]) {
       case 3:
       {
       msg.linear.x = 0.0;
-      msg.angular.z = -1.0;
+      msg.angular.z = -2.0;
       int ts=0;
       ts = rand() %10 + 3;
       for (int i=0 ; i<ts; i++)
@@ -88,7 +88,7 @@ int main(int argc, char *argv[]) {
           ros::Duration(0.2).sleep();
         }
       msg.linear.x = 0.0;
-      msg.angular.z = -1.0;
+      msg.angular.z = -2.0;
       }
 
     }
