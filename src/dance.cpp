@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
   ros::init(argc, argv, "bookish_carnival");
 
   ros::NodeHandle nh;
-  ros::Publisher cmd_vel_pub = nh.advertise<geometry_msgs::Twist>("/turtle1/cmd_vel", 10);
+  ros::Publisher cmd_vel_pub = nh.advertise<geometry_msgs::Twist>("cmd_vel_mux/input/navi", 10);
   srand (time(NULL));
   int mode = 0;
   geometry_msgs::Twist msg;
