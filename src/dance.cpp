@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
   ros::Publisher sound_pub = nh.advertise<std_msgs::Int8>("sound", 10); //Setting up publisher used by player node
   geometry_msgs::Twist msg;
   std_msgs::Int8 msgb;
-  ROS_INFO(Starting Dance Node);
+  ROS_INFO("Starting Dance Node");
 
   srand (time(NULL));
   int mode = 0;
