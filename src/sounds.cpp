@@ -43,22 +43,38 @@ int main(int argc, char **argv)
 		case(0):
 			{
 				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/cricket.wav");
-     		sleep(0);
+     		while(sound == 0)
+					{
+						sleep(0.1);
+						ros::spinOnce()
+					}
 			}
 		case(1):
 			{
 				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/Yee.wav");
-     		sleep(0);
+				while(sound == 1)
+					{
+						sleep(0.1);
+						ros::spinOnce()
+					}
 			}
 		case(2):
 			{
 				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/reverse.wav");
-     		sleep(0);
+				while(sound == 2)
+					{
+						sleep(0.1);
+						ros::spinOnce()
+					}
 			}
 		case(3):
 			{
 				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/nani.wav");
-     		sleep(0);
+				while(sound == 3)
+					{
+						sleep(0.1);
+						ros::spinOnce()
+					}
 			}
 		}
 
