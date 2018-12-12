@@ -19,6 +19,13 @@ int main(int argc, char *argv[]) {
   sleep(7);
   
   int t = 0;
+  
+  void move(int lin=0, int ang=0)
+  {
+    msg.linear.x = lin;
+    msg.angular.z = ang;
+  }
+  
 
   while(ros::ok())
     {
@@ -29,8 +36,7 @@ int main(int argc, char *argv[]) {
           case 0:
           //Going forward
             {
-              msg.linear.x = 0.2;
-              msg.angular.z = 0.0;
+              move(0.2,0);
               msgb.data = 1; //Publishing data for going forward
               sound_pub.publish(msgb);
 
@@ -42,8 +48,7 @@ int main(int argc, char *argv[]) {
 
               msgb.data = 0; //Publishing data for return / idle
               sound_pub.publish(msgb);
-              msg.linear.x = -0.2; //Returning to initial position
-              msg.angular.z = 0.0;
+              move(-0.2,0); //Returning to initial position
 
               for (int i=0 ; i<t; i++)
                 {
@@ -54,8 +59,7 @@ int main(int argc, char *argv[]) {
           case 1:
           //Spin direction 1
             {
-              msg.linear.x = 0.0;
-              msg.angular.z = 2.0;
+              move(0,2);
               msgb.data = 3; // Publishing data for spin
               sound_pub.publish(msgb);
               for (int i=0 ; i<t; i++)
@@ -69,8 +73,7 @@ int main(int argc, char *argv[]) {
           case 2:
           //Going backwards
             {
-              msg.linear.x = -0.2;
-              msg.angular.z = 0.0;
+              move(-0.2,0);
               msgb.data = 2; //Publishing data for going backwards
               sound_pub.publish(msgb);
               for (int i=0 ; i<t; i++)
@@ -80,8 +83,7 @@ int main(int argc, char *argv[]) {
                 }
               msgb.data = 0; //Publishing data for return / idle
               sound_pub.publish(msgb);
-              msg.linear.x = 0.2; //Returning to initial position
-              msg.angular.z = 0.0;
+              move(0.2,0); //Returning to initial position
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
@@ -92,8 +94,7 @@ int main(int argc, char *argv[]) {
           case 3:
           //Spin direction 2
             {
-              msg.linear.x = 0.0;
-              msg.angular.z = -2.0;
+              move(0,-0.2);
               msgb.data = 3; // Publishing data for spin
               sound_pub.publish(msgb);
               for (int i=0 ; i<t; i++)
