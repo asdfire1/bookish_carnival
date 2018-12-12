@@ -17,10 +17,13 @@ int main(int argc, char *argv[]) {
   msgb.data = 0; //Publishing data for return / idle
   sound_pub.publish(msgb);
   sleep(7);
+  
+  int t = 0;
 
   while(ros::ok())
     {
       mode = rand() % 3 + 0;
+      t = rand() %20 + 6;
       switch(mode)
         {
           case 0:
@@ -28,12 +31,10 @@ int main(int argc, char *argv[]) {
             {
               msg.linear.x = 0.2;
               msg.angular.z = 0.0;
-              int tf=0;
-              tf = rand() %20 + 6;
               msgb.data = 1; //Publishing data for going forward
               sound_pub.publish(msgb);
 
-              for (int i=0 ; i<tf; i++)
+              for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
@@ -44,7 +45,7 @@ int main(int argc, char *argv[]) {
               msg.linear.x = -0.2; //Returning to initial position
               msg.angular.z = 0.0;
 
-              for (int i=0 ; i<tf; i++)
+              for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
@@ -55,11 +56,9 @@ int main(int argc, char *argv[]) {
             {
               msg.linear.x = 0.0;
               msg.angular.z = 2.0;
-              int ts=0;
-              ts = rand() %20 + 6;
               msgb.data = 3; // Publishing data for spin
               sound_pub.publish(msgb);
-              for (int i=0 ; i<ts; i++)
+              for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
@@ -72,11 +71,9 @@ int main(int argc, char *argv[]) {
             {
               msg.linear.x = -0.2;
               msg.angular.z = 0.0;
-              int tb=0;
-              tb = rand() %20 + 6;
               msgb.data = 2; //Publishing data for going backwards
               sound_pub.publish(msgb);
-              for (int i=0 ; i<tb; i++)
+              for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
@@ -85,7 +82,7 @@ int main(int argc, char *argv[]) {
               sound_pub.publish(msgb);
               msg.linear.x = 0.2; //Returning to initial position
               msg.angular.z = 0.0;
-              for (int i=0 ; i<tb; i++)
+              for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
@@ -97,11 +94,9 @@ int main(int argc, char *argv[]) {
             {
               msg.linear.x = 0.0;
               msg.angular.z = -2.0;
-              int ts=0;
-              ts = rand() %20 + 6;
               msgb.data = 3; // Publishing data for spin
               sound_pub.publish(msgb);
-              for (int i=0 ; i<ts; i++)
+              for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
