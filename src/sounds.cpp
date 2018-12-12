@@ -11,7 +11,7 @@ void soundCallback(const std_msgs::Int8::ConstPtr& msg) //Callback function for 
 }
 
 int main(int argc, char **argv) {
-
+	ROS_INFO("Player node starting up");
   ros::init(argc, argv, "subscriber");
  	ros::NodeHandle nh;
   ros::Subscriber sub = nh.subscribe("sound", 10, soundCallback);
@@ -26,6 +26,7 @@ int main(int argc, char **argv) {
 					case(0):
 					//Idle / return sound
 						{
+							ROS_INFO("Playing idle/return sound");
 							sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/cricket.wav");
      					while(sound == 0 && ros::ok())
 								{
@@ -36,6 +37,7 @@ int main(int argc, char **argv) {
 					case(1):
 					//Forward sound
 						{
+							ROS_INFO("Playing forward sound");
 							sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/Yee.wav");
 							while(sound == 1 && ros::ok())
 								{
@@ -46,6 +48,7 @@ int main(int argc, char **argv) {
 					case(2):
 					//Backwards sound
 						{
+							ROS_INFO("Playing backwards sound");
 							sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/reverse.wav");
 							while(sound == 2 && ros::ok())
 								{
@@ -56,6 +59,7 @@ int main(int argc, char **argv) {
 					case(3):
 					//Spinning sound
 						{
+							ROS_INFO("Playing spinning sound");
 							sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/nani.wav");
 							while(sound == 3 && ros::ok())
 								{
