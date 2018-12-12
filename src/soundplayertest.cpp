@@ -9,14 +9,14 @@
    ros::NodeHandle nh;
    sound_play::SoundClient sc;
 
-   sleepok(1, nh);
+   sleep(1);
 
    while(nh.ok())
    {
      sc.say("Hello world!");
      sleep(2);
      sc.playWave("/home/ros/Yee.wav");
-     sleepok(2);
+     sleep(2);
 
   }
 	return 0;
