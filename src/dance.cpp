@@ -1,7 +1,6 @@
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
 #include "std_msgs/Int8.h"
-#include "std_msgs/Int16.h"
 #include <stdlib.h>
 #include <time.h>
 
@@ -11,16 +10,13 @@ int main(int argc, char *argv[]) {
   ros::NodeHandle nh;
   ros::Publisher cmd_vel_pub = nh.advertise<geometry_msgs::Twist>("cmd_vel_mux/input/navi", 10);
   ros::Publisher sound_pub = nh.advertise<std_msgs::Int8>("sound", 10);
-  ros::Publisher playtime_pub = nh.advertise<std_msgs::Int16>("playtime", 10);
   srand (time(NULL));
   int mode = 0;
   geometry_msgs::Twist msg;
   std_msgs::Int8 msgb;
-  std_msgs::Int16 msgc;
 
   msgb.data = 0;
-  msgc.data = 1;
-  playtime_pub.publish(msgc);
+
   sleep(7);
   while(ros::ok())
   {
@@ -36,9 +32,7 @@ int main(int argc, char *argv[]) {
         int tf=0;
         tf = rand() %20 + 6;
         msgb.data = 1;
-        msgc.data = tf;
         sound_pub.publish(msgb);
-        playtime_pub.publish(msgc);
         for (int i=0 ; i<tf; i++)
           {
             cmd_vel_pub.publish(msg);
@@ -63,8 +57,6 @@ int main(int argc, char *argv[]) {
       int ts=0;
       ts = rand() %20 + 6;
       msgb.data = 3;
-      msgc.data = ts;
-      playtime_pub.publish(msgc);
       sound_pub.publish(msgb);
       for (int i=0 ; i<ts; i++)
         {
@@ -82,8 +74,6 @@ int main(int argc, char *argv[]) {
         int tb=0;
         tb = rand() %20 + 6;
         msgb.data = 2;
-        msgc.data = tb;
-        playtime_pub.publish(msgc);
         sound_pub.publish(msgb);
         for (int i=0 ; i<tb; i++)
           {
@@ -108,8 +98,6 @@ int main(int argc, char *argv[]) {
       int ts=0;
       ts = rand() %20 + 6;
       msgb.data = 3;
-      msgc.data = ts;
-      playtime_pub.publish(msgc);
       sound_pub.publish(msgb);
       for (int i=0 ; i<ts; i++)
         {
