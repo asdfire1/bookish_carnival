@@ -23,6 +23,7 @@ int main(int argc, char **argv)
  	ros::NodeHandle nh;
   	ros::Subscriber sub = nh.subscribe("sound", 10, soundCallback);
 	ROS_INFO("starting loop", sound);
+	 sound_play::SoundClient sc;
 	while (ros::ok())
 	{
 	ros::spin();
@@ -42,12 +43,12 @@ int main(int argc, char **argv)
 		case(2):
 			{
 				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/reverse.wav");
-     		sleep(2)
+     		sleep(2);
 			}
 		case(3):
 			{
 				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/nani.wav");
-     		sleep(2)
+     		sleep(2);
 			}
 		}
 
