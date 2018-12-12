@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
           case 0:
           //Going forward
             {
-              ROS_INFO(Going Forward);
+              ROS_INFO("Going Forward");
               msg.linear.x = 0.2;
               msg.angular.z = 0.0;
               msgb.data = 1; //Publishing data for going forward
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-              ROS_INFO(Returning);
+              ROS_INFO("Returning");
               msgb.data = 0; //Publishing data for return / idle
               sound_pub.publish(msgb);
               msg.linear.x = -0.2; //Returning to initial position
@@ -56,7 +56,7 @@ int main(int argc, char *argv[]) {
           case 1:
           //Spin direction 1
             {
-              ROS_INFO(Spinning CCL);
+              ROS_INFO("Spinning CCL");
               msg.linear.x = 0.0;
               msg.angular.z = 2.0;
               msgb.data = 3; // Publishing data for spin
@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
           case 2:
           //Going backwards
             {
-              ROS_INFO(Going Backwards);
+              ROS_INFO("Going Backwards");
               msg.linear.x = -0.2;
               msg.angular.z = 0.0;
               msgb.data = 2; //Publishing data for going backwards
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-              ROS_INFO(Returning);
+              ROS_INFO("Returning");
               msgb.data = 0; //Publishing data for return / idle
               sound_pub.publish(msgb);
               msg.linear.x = 0.2; //Returning to initial position
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
           case 3:
           //Spin direction 2
             {
-              ROS_INFO(Spinning CL);
+              ROS_INFO("Spinning CL");
               msg.linear.x = 0.0;
               msg.angular.z = -2.0;
               msgb.data = 3; // Publishing data for spin
