@@ -4,6 +4,14 @@
 #include <stdlib.h>
 #include <time.h>
 
+void init()
+{
+  ros::NodeHandle nh;
+  ros::Publisher cmd_vel_pub = nh.advertise<geometry_msgs::Twist>("cmd_vel_mux/input/navi", 10); //Setting up publisher for velocities
+  ros::Publisher sound_pub = nh.advertise<std_msgs::Int8>("sound", 10); //Setting up publisher used by player node
+  geometry_msgs::Twist msg;
+  std_msgs::Int8 msgb;
+}
 
 void move(float lin=0.0, float ang=0.0) //function for movement
   {
@@ -19,11 +27,7 @@ void publishsound (int data=0)   //function for publishing sound data
 
 int main(int argc, char *argv[]) {
   ros::init(argc, argv, "bookish_carnival");
-  ros::NodeHandle nh;
-  ros::Publisher cmd_vel_pub = nh.advertise<geometry_msgs::Twist>("cmd_vel_mux/input/navi", 10); //Setting up publisher for velocities
-  ros::Publisher sound_pub = nh.advertise<std_msgs::Int8>("sound", 10); //Setting up publisher used by player node
-  geometry_msgs::Twist msg;
-  std_msgs::Int8 msgb;
+  init();
 
   srand (time(NULL));
   int mode = 0;
