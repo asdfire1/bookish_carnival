@@ -46,7 +46,7 @@ int main(int argc, char **argv)
      		while(sound == 0)
 					{
 						sleep(0.1);
-						ros::spinOnce()
+						ros::spinOnce();
 					}
 			}
 		case(1):
@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 				while(sound == 1)
 					{
 						sleep(0.1);
-						ros::spinOnce()
+						ros::spinOnce();
 					}
 			}
 		case(2):
@@ -64,7 +64,7 @@ int main(int argc, char **argv)
 				while(sound == 2)
 					{
 						sleep(0.1);
-						ros::spinOnce()
+						ros::spinOnce();
 					}
 			}
 		case(3):
@@ -73,7 +73,7 @@ int main(int argc, char **argv)
 				while(sound == 3)
 					{
 						sleep(0.1);
-						ros::spinOnce()
+						ros::spinOnce();
 					}
 			}
 		}
