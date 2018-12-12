@@ -29,7 +29,6 @@ int main(int argc, char *argv[]) {
         {
           case 0:
           //Going forward
-            {
               ROS_INFO("Going Forward");
               msg.linear.x = 0.2;
               msg.angular.z = 0.0;
@@ -52,10 +51,10 @@ int main(int argc, char *argv[]) {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-            }
+              break;
+          
           case 1:
           //Spin direction 1
-            {
               ROS_INFO("Spinning CCL");
               msg.linear.x = 0.0;
               msg.angular.z = 2.0;
@@ -68,10 +67,11 @@ int main(int argc, char *argv[]) {
                 }
               msgb.data = 0; //Publishing data for return / idle
               sound_pub.publish(msgb);
-            }
+          
+              break;
+          
           case 2:
           //Going backwards
-            {
               ROS_INFO("Going Backwards");
               msg.linear.x = -0.2;
               msg.angular.z = 0.0;
@@ -92,11 +92,11 @@ int main(int argc, char *argv[]) {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-
-            }
+              
+              break;
+          
           case 3:
           //Spin direction 2
-            {
               ROS_INFO("Spinning CL");
               msg.linear.x = 0.0;
               msg.angular.z = -2.0;
@@ -109,8 +109,8 @@ int main(int argc, char *argv[]) {
                 }
               msgb.data = 0; //Publishing data for return / idle
               sound_pub.publish(msgb);
-            }
-
+              
+              break;
         }
     }
 
