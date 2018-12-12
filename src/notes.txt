@@ -6,8 +6,6 @@
 
 #include "ros/ros.h"
 #include "std_msgs/Int8.h"
-#include <sound_play/sound_play.h>
-#include <unistd.h>
 int sound = -1;
 void soundCallback(const std_msgs::Int8::ConstPtr& msg)
 {
@@ -23,34 +21,7 @@ int main(int argc, char **argv)
  	ros::NodeHandle nh;
   	ros::Subscriber sub = nh.subscribe("sound", 10, soundCallback);
 	ROS_INFO("starting loop", sound);
-	while (ros::ok())
-	{
 	ros::spin();
-	sleep(0.2);
-		switch(sound)
-		{
-		case(0):
-			{
-				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/cricket.wav");
-     		sleep(1);
-			}
-		case(1):
-			{
-				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/Yee.wav");
-     		sleep(2);
-			}
-		case(2):
-			{
-				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/reverse.wav");
-     		sleep(2)
-			}
-		case(3):
-			{
-				sc.playWave("/home/ros/miniproject_ws/src/bookish_carnival/src/nani.wav");
-     		sleep(2)
-			}
-		}
-
-	}
+	// sound is a global variable that can now be used anywhere
   return 0;
 }

@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
   geometry_msgs::Twist msg;
   std_msgs::Int8 msgb;
   msgb.data = 0;
-
+  sleep(7);
   while(ros::ok())
   {
     mode = rand() % 3 + 0;
@@ -36,6 +36,8 @@ int main(int argc, char *argv[]) {
             cmd_vel_pub.publish(msg);
             ros::Duration(0.2).sleep();
           }
+        msgb.data = 0;
+        sound_pub.publish(msgb);
         msg.linear.x = -0.4;
         msg.angular.z = 0.0;
         for (int i=0 ; i<tf; i++)
@@ -43,8 +45,8 @@ int main(int argc, char *argv[]) {
             cmd_vel_pub.publish(msg);
             ros::Duration(0.2).sleep();
         }
-      msgb.data = 0;
-      sound_pub.publish(msgb);
+
+
       }
       case 1:
       {
@@ -76,6 +78,8 @@ int main(int argc, char *argv[]) {
             cmd_vel_pub.publish(msg);
             ros::Duration(0.2).sleep();
           }
+        msgb.data = 0;
+        sound_pub.publish(msgb);
         msg.linear.x = 0.4;
         msg.angular.z = 0.0;
         for (int i=0 ; i<tb; i++)
@@ -83,8 +87,7 @@ int main(int argc, char *argv[]) {
             cmd_vel_pub.publish(msg);
             ros::Duration(0.2).sleep();
         }
-        msgb.data = 0;
-        sound_pub.publish(msgb);
+
       }
       case 3:
       {

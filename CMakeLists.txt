@@ -14,11 +14,7 @@ add_executable(bookish_carnival src/dance.cpp)
 target_link_libraries(bookish_carnival
   ${catkin_LIBRARIES}
 )
-add_executable(subscriber src/subscribertest.cpp)
-target_link_libraries(subscriber
-  ${catkin_LIBRARIES}
-)
-add_executable(soundtest src/soundplayertest.cpp)
-target_link_libraries(soundtest
+add_executable(player src/sounds.cpp)
+target_link_libraries(player
   ${catkin_LIBRARIES}
 )
