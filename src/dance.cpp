@@ -20,7 +20,7 @@ int main(int argc, char *argv[]) {
   
   int t = 0;
   
-  void move(int lin=0, int ang=0) //function for movement
+  void move(float lin=0.0, float ang=0.0) //function for movement
   {
     msg.linear.x = lin;
     msg.angular.z = ang;
@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
           case 0:
           //Going forward
             {
-              move(0.2,0);
+              move(0.2,0.0);
               publishsound(1); //Publishing data for going forward
 
               for (int i=0 ; i<t; i++)
@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
                 }
 
               publishsound(0); //Publishing data for return / idle
-              move(-0.2,0); //Returning to initial position
+              move(-0.2,0.0); //Returning to initial position
 
               for (int i=0 ; i<t; i++)
                 {
@@ -62,7 +62,7 @@ int main(int argc, char *argv[]) {
           case 1:
           //Spin direction 1
             {
-              move(0,2);
+              move(0.0,2.0);
               publishsound(3); // Publishing data for spin
               for (int i=0 ; i<t; i++)
                 {
@@ -74,7 +74,7 @@ int main(int argc, char *argv[]) {
           case 2:
           //Going backwards
             {
-              move(-0.2,0);
+              move(-0.2,0.0);
               publishsound(2); //Publishing data for going backwards
               for (int i=0 ; i<t; i++)
                 {
@@ -82,7 +82,7 @@ int main(int argc, char *argv[]) {
                   ros::Duration(0.2).sleep();
                 }
               publishsound(0); //Publishing data for return / idle
-              move(0.2,0); //Returning to initial position
+              move(0.2,0.0); //Returning to initial position
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
@@ -93,7 +93,7 @@ int main(int argc, char *argv[]) {
           case 3:
           //Spin direction 2
             {
-              move(0,-0.2);
+              move(0.0,-0.2);
               publishsound(3); // Publishing data for spin
               for (int i=0 ; i<t; i++)
                 {
