@@ -19,6 +19,18 @@ int main(int argc, char *argv[]) {
   sleep(7);
   
   int t = 0;
+  
+  void move(float lin=0.0, float ang=0.0) //function for movement
+  {
+    msg.linear.x = lin;
+    msg.angular.z = ang;
+  }
+  
+  void publishsound (int data=0)   //function for publishing sound data
+  {
+    msgb.data = data;  
+    sound_pub.publish(msgb);
+  }
 
   while(ros::ok())
     {
@@ -29,10 +41,8 @@ int main(int argc, char *argv[]) {
           case 0:
           //Going forward
             {
-              msg.linear.x = 0.2;
-              msg.angular.z = 0.0;
-              msgb.data = 1; //Publishing data for going forward
-              sound_pub.publish(msgb);
+              move(0.2,0.0);
+              publishsound(1); //Publishing data for going forward
 
               for (int i=0 ; i<t; i++)
                 {
@@ -40,10 +50,8 @@ int main(int argc, char *argv[]) {
                   ros::Duration(0.2).sleep();
                 }
 
-              msgb.data = 0; //Publishing data for return / idle
-              sound_pub.publish(msgb);
-              msg.linear.x = -0.2; //Returning to initial position
-              msg.angular.z = 0.0;
+              publishsound(0); //Publishing data for return / idle
+              move(-0.2,0.0); //Returning to initial position
 
               for (int i=0 ; i<t; i++)
                 {
@@ -54,34 +62,27 @@ int main(int argc, char *argv[]) {
           case 1:
           //Spin direction 1
             {
-              msg.linear.x = 0.0;
-              msg.angular.z = 2.0;
-              msgb.data = 3; // Publishing data for spin
-              sound_pub.publish(msgb);
+              move(0.0,2.0);
+              publishsound(3); // Publishing data for spin
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-              msgb.data = 0; //Publishing data for return / idle
-              sound_pub.publish(msgb);
+              publishsound(0); //Publishing data for return / idle
             }
           case 2:
           //Going backwards
             {
-              msg.linear.x = -0.2;
-              msg.angular.z = 0.0;
-              msgb.data = 2; //Publishing data for going backwards
-              sound_pub.publish(msgb);
+              move(-0.2,0.0);
+              publishsound(2); //Publishing data for going backwards
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-              msgb.data = 0; //Publishing data for return / idle
-              sound_pub.publish(msgb);
-              msg.linear.x = 0.2; //Returning to initial position
-              msg.angular.z = 0.0;
+              publishsound(0); //Publishing data for return / idle
+              move(0.2,0.0); //Returning to initial position
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
@@ -92,17 +93,14 @@ int main(int argc, char *argv[]) {
           case 3:
           //Spin direction 2
             {
-              msg.linear.x = 0.0;
-              msg.angular.z = -2.0;
-              msgb.data = 3; // Publishing data for spin
-              sound_pub.publish(msgb);
+              move(0.0,-0.2);
+              publishsound(3); // Publishing data for spin
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-              msgb.data = 0; //Publishing data for return / idle
-              sound_pub.publish(msgb);
+              publishsound(0); //Publishing data for return / idle
             }
 
         }
