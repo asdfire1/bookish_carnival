@@ -20,12 +20,17 @@ int main(int argc, char *argv[]) {
   
   int t = 0;
   
-  void move(int lin=0, int ang=0)
+  void move(int lin=0, int ang=0) //function for movement
   {
     msg.linear.x = lin;
     msg.angular.z = ang;
   }
   
+  void publishsound (int data=0)   //function for publishing sound data
+  {
+    msgb.data = data;  
+    sound_pub.publish(msgb);
+  }
 
   while(ros::ok())
     {
@@ -37,8 +42,7 @@ int main(int argc, char *argv[]) {
           //Going forward
             {
               move(0.2,0);
-              msgb.data = 1; //Publishing data for going forward
-              sound_pub.publish(msgb);
+              publishsound(1); //Publishing data for going forward
 
               for (int i=0 ; i<t; i++)
                 {
@@ -46,8 +50,7 @@ int main(int argc, char *argv[]) {
                   ros::Duration(0.2).sleep();
                 }
 
-              msgb.data = 0; //Publishing data for return / idle
-              sound_pub.publish(msgb);
+              publishsound(0); //Publishing data for return / idle
               move(-0.2,0); //Returning to initial position
 
               for (int i=0 ; i<t; i++)
@@ -60,29 +63,25 @@ int main(int argc, char *argv[]) {
           //Spin direction 1
             {
               move(0,2);
-              msgb.data = 3; // Publishing data for spin
-              sound_pub.publish(msgb);
+              publishsound(3); // Publishing data for spin
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-              msgb.data = 0; //Publishing data for return / idle
-              sound_pub.publish(msgb);
+              publishsound(0); //Publishing data for return / idle
             }
           case 2:
           //Going backwards
             {
               move(-0.2,0);
-              msgb.data = 2; //Publishing data for going backwards
-              sound_pub.publish(msgb);
+              publishsound(2); //Publishing data for going backwards
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-              msgb.data = 0; //Publishing data for return / idle
-              sound_pub.publish(msgb);
+              publishsound(0); //Publishing data for return / idle
               move(0.2,0); //Returning to initial position
               for (int i=0 ; i<t; i++)
                 {
@@ -95,15 +94,13 @@ int main(int argc, char *argv[]) {
           //Spin direction 2
             {
               move(0,-0.2);
-              msgb.data = 3; // Publishing data for spin
-              sound_pub.publish(msgb);
+              publishsound(3); // Publishing data for spin
               for (int i=0 ; i<t; i++)
                 {
                   cmd_vel_pub.publish(msg);
                   ros::Duration(0.2).sleep();
                 }
-              msgb.data = 0; //Publishing data for return / idle
-              sound_pub.publish(msgb);
+              publishsound(0); //Publishing data for return / idle
             }
 
         }
