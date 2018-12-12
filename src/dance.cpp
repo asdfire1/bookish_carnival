@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 
   while(ros::ok())
     {
-      mode = rand() % 3 + 0;
+      mode = rand() % 4 + 0;
       t = rand() %20 + 6;
       switch(mode)
         {
@@ -55,7 +55,7 @@ int main(int argc, char *argv[]) {
           
           case 1:
           //Spin direction 1
-              ROS_INFO("Spinning CCL");
+              ROS_INFO("Spinning CCW");
               msg.linear.x = 0.0;
               msg.angular.z = 2.0;
               msgb.data = 3; // Publishing data for spin
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
           
           case 3:
           //Spin direction 2
-              ROS_INFO("Spinning CL");
+              ROS_INFO("Spinning CW");
               msg.linear.x = 0.0;
               msg.angular.z = -2.0;
               msgb.data = 3; // Publishing data for spin
