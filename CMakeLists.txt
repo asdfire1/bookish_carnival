@@ -18,3 +18,7 @@ add_executable(subscriber src/subscribertest.cpp)
 target_link_libraries(subscriber
   ${catkin_LIBRARIES}
 )
+add_executable(soundtest src/soundplayertest.cpp)
+target_link_libraries(soundtest
+  ${catkin_LIBRARIES}
+)
