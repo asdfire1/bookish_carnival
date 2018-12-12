@@ -6,6 +6,7 @@
 
 #include "ros/ros.h"
 #include "std_msgs/Int8.h"
+#include "std_msgs/Int16.h"
 #include <sound_play/sound_play.h>
 #include <unistd.h>
 int sound = -1;
