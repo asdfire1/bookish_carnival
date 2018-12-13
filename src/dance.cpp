@@ -16,6 +16,11 @@ void move(float lin=0.0, float ang=0.0) //function for movement
   {
     msg.linear.x = lin;
     msg.angular.z = ang;
+    for (int i=0 ; i<t; i++)
+      {
+        cmd_vel_pub.publish(msg);
+        ros::Duration(0.2).sleep();
+      }
   }
   
 void publishsound(int data=0)   //function for publishing sound data
@@ -47,65 +52,31 @@ int main(int argc, char *argv[]) {
           case 0:
           //Going forward
             {
-              move(0.2,0.0);
               publishsound(1); //Publishing data for going forward
-
-              for (int i=0 ; i<t; i++)
-                {
-                  cmd_vel_pub.publish(msg);
-                  ros::Duration(0.2).sleep();
-                }
-
+              move(0.2,0.0);
               publishsound(0); //Publishing data for return / idle
               move(-0.2,0.0); //Returning to initial position
-
-              for (int i=0 ; i<t; i++)
-                {
-                  cmd_vel_pub.publish(msg);
-                  ros::Duration(0.2).sleep();
-                }
             }
           case 1:
           //Spin direction 1
             {
-              move(0.0,2.0);
               publishsound(3); // Publishing data for spin
-              for (int i=0 ; i<t; i++)
-                {
-                  cmd_vel_pub.publish(msg);
-                  ros::Duration(0.2).sleep();
-                }
+              move(0.0,2.0);
               publishsound(0); //Publishing data for return / idle
             }
           case 2:
           //Going backwards
             {
-              move(-0.2,0.0);
               publishsound(2); //Publishing data for going backwards
-              for (int i=0 ; i<t; i++)
-                {
-                  cmd_vel_pub.publish(msg);
-                  ros::Duration(0.2).sleep();
-                }
+              move(-0.2,0.0);
               publishsound(0); //Publishing data for return / idle
               move(0.2,0.0); //Returning to initial position
-              for (int i=0 ; i<t; i++)
-                {
-                  cmd_vel_pub.publish(msg);
-                  ros::Duration(0.2).sleep();
-                }
-
             }
           case 3:
           //Spin direction 2
             {
-              move(0.0,-0.2);
               publishsound(3); // Publishing data for spin
-              for (int i=0 ; i<t; i++)
-                {
-                  cmd_vel_pub.publish(msg);
-                  ros::Duration(0.2).sleep();
-                }
+              move(0.0,-0.2);
               publishsound(0); //Publishing data for return / idle
             }
 
