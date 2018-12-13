@@ -7,7 +7,7 @@
 
 void move(float lin=0.0, float ang=0.0) //function for movement
   
-void publishsound (int data=0)   //function for publishing sound data
+void publishsound(int data=0)   //function for publishing sound data
 
 int main(int argc, char *argv[]) {
   ros::init(argc, argv, "bookish_carnival");
@@ -108,7 +108,7 @@ void move(float lin=0.0, float ang=0.0) //function for movement
     msg.angular.z = ang;
   }
   
-void publishsound (int data=0)   //function for publishing sound data
+void publishsound(int data=0)   //function for publishing sound data
   {
     msgb.data = data;  
     sound_pub.publish(msgb);
