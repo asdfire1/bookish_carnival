@@ -4,6 +4,11 @@
 #include <stdlib.h>
 #include <time.h>
 
+
+void move(float lin=0.0, float ang=0.0) //function for movement
+  
+void publishsound (int data=0)   //function for publishing sound data
+
 int main(int argc, char *argv[]) {
   ros::init(argc, argv, "bookish_carnival");
   ros::NodeHandle nh;
@@ -19,18 +24,6 @@ int main(int argc, char *argv[]) {
   sleep(7);
   
   int t = 0;
-  
-  void move(float lin=0.0, float ang=0.0) //function for movement
-  {
-    msg.linear.x = lin;
-    msg.angular.z = ang;
-  }
-  
-  void publishsound (int data=0)   //function for publishing sound data
-  {
-    msgb.data = data;  
-    sound_pub.publish(msgb);
-  }
 
   while(ros::ok())
     {
@@ -108,3 +101,15 @@ int main(int argc, char *argv[]) {
 
   return 0;
 }
+
+void move(float lin=0.0, float ang=0.0) //function for movement
+  {
+    msg.linear.x = lin;
+    msg.angular.z = ang;
+  }
+  
+void publishsound (int data=0)   //function for publishing sound data
+  {
+    msgb.data = data;  
+    sound_pub.publish(msgb);
+  }
