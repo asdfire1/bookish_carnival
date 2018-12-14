@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>bookish_carnival</name>
-  <version>0.0.0</version>
+  <version>1.0.0</version>
   <description>The bookish_carnival package</description>
 
-  <maintainer email="asdfirepl@gmail.com">Antoni Malecki</maintainer>
+  <maintainer email="rob1c2-17b@student.aau.dk">C2-17b</maintainer>
 
   <license>MIT</license>
 
