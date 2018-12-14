@@ -33,6 +33,7 @@ int main(int argc, char **argv) {
 									sleep(0.1);
 									ros::spinOnce();
 								}
+						break;
 						}
 					case(1):
 					//Forward sound
@@ -44,6 +45,7 @@ int main(int argc, char **argv) {
 									sleep(0.1);
 									ros::spinOnce();
 								}
+						break;
 						}
 					case(2):
 					//Backwards sound
@@ -55,6 +57,7 @@ int main(int argc, char **argv) {
 									sleep(0.1);
 									ros::spinOnce();
 								}
+						break;
 						}
 					case(3):
 					//Spinning sound
@@ -66,6 +69,7 @@ int main(int argc, char **argv) {
 									sleep(0.1);
 									ros::spinOnce();
 								}
+						break;
 						}
 				}
 
