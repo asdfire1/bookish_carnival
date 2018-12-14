@@ -12,7 +12,7 @@ void soundCallback(const std_msgs::Int8::ConstPtr& msg) //Callback function for 
 
 int main(int argc, char **argv) {
 	ROS_INFO("Player node starting up");
-  ros::init(argc, argv, "subscriber");
+  ros::init(argc, argv, "player");
  	ros::NodeHandle nh;
   ros::Subscriber sub = nh.subscribe("sound", 10, soundCallback);
 	sound_play::SoundClient sc;
